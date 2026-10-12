@@ -1,0 +1,1099 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>جاواهری | فروشگاه طلا و جواهر</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+:root {
+  --gold: #bd8b8b;
+  --dark: #493638;
+  --cream: #fff8f5;
+  --white: #ffffff;
+  --muted: #897579;
+}
+
+
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  background: var(--cream);
+  color: var(--dark);
+  line-height: 1.8;
+}
+
+button, input {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+header {
+  background: #fff;
+  padding: 16px 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #eee3d3;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 27px;
+  font-weight: bold;
+  color: var(--gold);
+}
+
+nav {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: var(--dark);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: var(--gold);
+}
+
+.cart-button, .gold-button {
+  background: var(--gold);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 17px;
+}
+
+.hero {
+  min-height: 430px;
+  padding: 55px 7%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 35px;
+  background: #f1e5d3;
+}
+
+.hero h1 {
+  font-size: clamp(28px, 4vw, 43px);
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  color: var(--muted);
+  margin-bottom: 25px;
+}
+
+.hero img {
+  width: 100%;
+  height: 330px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+section {
+  padding: 55px 6%;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 27px;
+  margin-bottom: 8px;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--muted);
+  margin-bottom: 30px;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.category {
+  background: white;
+  text-align: center;
+  border-radius: 9px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid #eee3d3;
+  transition: transform .2s;
+}
+
+.category:hover {
+  transform: translateY(-4px);
+}
+
+.category img {
+  width: 100%;
+  height: 175px;
+  object-fit: cover;
+}
+
+.category h3 {
+  padding: 12px;
+}
+
+.collection {
+  margin: 0 6%;
+  padding: 35px;
+  background: #dfc8a4;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.collection h2 {
+  margin-bottom: 8px;
+}
+
+.collection p {
+  margin-bottom: 18px;
+}
+
+.products-section {
+  padding-top: 55px;
+}
+
+.product-tools {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.product-tools input {
+  width: min(320px, 100%);
+  padding: 12px;
+  border: 1px solid #dfd2bf;
+  border-radius: 6px;
+  background: white;
+}
+
+.filters {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.filters button {
+  padding: 9px 15px;
+  border: 1px solid #d8c5a9;
+  border-radius: 6px;
+  background: white;
+  color: var(--dark);
+}
+
+.filters button.active,
+.filters button:hover {
+  background: var(--gold);
+  color: white;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.product {
+  background: white;
+  border-radius: 9px;
+  overflow: hidden;
+  border: 1px solid #eee6dc;
+  transition: transform .2s;
+}
+
+.product:hover {
+  transform: translateY(-4px);
+}
+
+.product img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+}
+
+.product-info {
+  padding: 15px;
+}
+
+.product-info h3 {
+  font-size: 16px;
+  margin-bottom: 7px;
+}
+
+.product-info p {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 9px;
+}
+
+.price {
+  color: var(--gold);
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.product-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.product-actions button {
+  flex: 1;
+  font-size: 12px;
+  padding: 9px 5px;
+  border-radius: 5px;
+  border: 1px solid var(--gold);
+}
+
+.add-button {
+  background: var(--gold);
+  color: white;
+}
+
+.detail-button {
+  background: white;
+  color: var(--gold);
+}
+
+.empty {
+  text-align: center;
+  grid-column: 1 / -1;
+  padding: 30px;
+  color: var(--muted);
+}
+
+footer {
+  background: var(--dark);
+  color: white;
+  padding: 35px 6%;
+  text-align: center;
+}
+
+footer p {
+  color: #e1d4c2;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  background: rgba(0,0,0,.55);
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-box {
+  width: min(500px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+}
+
+.modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.close-button {
+  border: none;
+  background: transparent;
+  font-size: 25px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-item button {
+  border: none;
+  color: #b33;
+  background: transparent;
+}
+
+.cart-total {
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--dark);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 7px;
+  display: none;
+  z-index: 50;
+}
+
+.toast.show {
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .categories {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero img {
+    height: 280px;
+  }
+}
+
+@media (max-width: 500px) {
+  header {
+    justify-content: center;
+  }
+
+  nav {
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .products {
+    gap: 10px;
+  }
+
+  .product img {
+    height: 165px;
+  }
+
+  .product-info {
+    padding: 10px;
+  }
+
+  .product-info h3 {
+    font-size: 14px;
+  }
+
+  section {
+    padding: 35px 4%;
+  }
+}
+
+/* ظاهر ظریف و زنانه جاواهری */
+body {
+  background: #fff8f5;
+  color: #493638;
+}
+
+header {
+  background: rgba(255, 255, 255, 0.97);
+  border-bottom: 1px solid #f0dfdf;
+  box-shadow: 0 3px 18px rgba(110, 70, 75, 0.05);
+}
+
+.logo {
+  color: #bd8b8b;
+  letter-spacing: 1px;
+}
+
+nav a {
+  transition: color 0.25s ease;
+}
+
+nav a:hover {
+  color: #bd8b8b;
+}
+
+.gold-button,
+.cart-button {
+  background: linear-gradient(135deg, #c99b9b, #b77e83);
+  border: 1px solid #b77e83;
+  border-radius: 25px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.gold-button:hover,
+.cart-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(183, 126, 131, 0.22);
+}
+
+.hero {
+  background: linear-gradient(120deg, #fff7f3, #f4e2df);
+}
+
+.hero h1 {
+  color: #493638;
+}
+
+.hero img {
+  border-radius: 18px;
+  box-shadow: 0 12px 35px rgba(100, 65, 70, 0.12);
+}
+
+.category,
+.product {
+  border: 1px solid #f0dfdf;
+  border-radius: 14px;
+  box-shadow: 0 5px 20px rgba(100, 65, 70, 0.045);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.category:hover,
+.product:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 26px rgba(100, 65, 70, 0.10);
+}
+
+.category img,
+.product img {
+  background: #fffaf8;
+}
+
+.product-info .price,
+.price {
+  color: #b77e83;
+}
+
+.collection {
+  background: linear-gradient(135deg, #f5e4e1, #ead0cf);
+  border: 1px solid #e9d0d0;
+  border-radius: 18px;
+}
+
+.product-tools input {
+  border-radius: 25px;
+  border-color: #e6cccc;
+  outline-color: #bd8b8b;
+}
+
+.filters button {
+  border-radius: 22px;
+  border-color: #e2c6c7;
+}
+
+.filters button.active,
+.filters button:hover {
+  background: #bd8b8b;
+  border-color: #bd8b8b;
+  color: white;
+}
+
+footer {
+  background: #493638;
+}
+.hero h1 {
+  font-size: 38px;
+  font-weight: 600;
+  line-height: 1.8;
+  letter-spacing: -1px;
+}
+
+.hero p {
+  color: #897579;
+  font-size: 16px;
+  line-height: 2;
+}
+
+.hero {
+  padding-top: 45px;
+  padding-bottom: 45px;
+}
+.product img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  background: #fffaf8;
+  border-radius: 12px 12px 0 0;
+}
+
+.product-info {
+  padding: 18px;
+}
+
+.product-info h3 {
+  color: #493638;
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.product-info .price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #b77e83;
+}
+
+.trust-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 35px 5%;
+  background: #fffaf8;
+  text-align: center;
+}
+
+.trust-item {
+  padding: 22px 12px;
+  border: 1px solid #f0dfdf;
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+.trust-item span {
+  font-size: 30px;
+  color: #bd8b8b;
+}
+
+.trust-item h3 {
+  color: #493638;
+  font-size: 17px;
+}
+
+.trust-item p {
+  color: #897579;
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  .trust-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+.whatsapp-box {
+  text-align: center;
+  padding: 30px 15px;
+  margin: 25px auto;
+  background: #fff1ed;
+  border: 1px solid #f0dfdf;
+  border-radius: 18px;
+}
+
+.whatsapp-box h3 {
+  color: #493638;
+}
+
+.whatsapp-box p {
+  color: #897579;
+  line-height: 2;
+}
+
+.whatsapp-button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 12px 26px;
+  background: #8b9b78;
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  transition: 0.25s ease;
+}
+
+.whatsapp-button:hover {
+  background: #71835e;
+  transform: translateY(-2px);
+}
+.logo img {
+  width: 75px;
+  height: 75px;
+  object-fit: contain;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Lume jewelry ✨</div>
+
+  <nav>
+    <a href="#home">خانه</a>
+    <a href="#categories">دسته‌بندی‌ها</a>
+    <a href="#products">محصولات</a>
+    <a href="#contact">تماس با ما</a>
+  </nav>
+
+  <button class="cart-button" onclick="openCart()">
+    🛍 سبد خرید (<span id="cart-count">0</span>)
+  </button>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div>
+      <h1>زیبایی، در جزئیات است</h1>
+      <p>
+        مجموعه‌ای از زیباترین انگشترها، گردنبندها و گوشواره‌ها
+        برای درخشش لحظه‌های خاص شما.
+      </p>
+      <a href="#products">
+        <button class="gold-button">مشاهده محصولات</button>
+      </a>
+    </div>
+
+    <img src="hero.jpg.jpg"
+         alt="مجموعه طلا و جواهر"
+         onerror="this.style.display='none'">
+  </section>
+
+  <section id="categories">
+    <h2 class="section-title">دسته‌بندی محصولات</h2>
+    <p class="section-subtitle">جواهر مورد علاقه‌ات را پیدا کن</p>
+
+    <div class="categories">
+      <div class="category" onclick="filterProducts('انگشتر')">
+        <img src="ring.jpg.jpg" alt="انگشتر">
+        <h3>انگشتر</h3>
+      </div>
+
+      <div class="category" onclick="filterProducts('گردنبند')">
+        <img src="necklace.jpg.jpg" alt="گردنبند">
+        <h3>گردنبند</h3>
+      </div>
+
+      <div class="category" onclick="filterProducts('گوشواره')">
+        <img src="earrings.jpg.jpg" alt="گوشواره">
+        <h3>گوشواره</h3>
+      </div>
+
+      <div class="category" onclick="filterProducts('دستبند')">
+        <img src="braklet.jpg" alt="دستبند">
+        <h3>دستبند</h3>
+      </div>
+    </div>
+  </section>
+
+  <div class="collection">
+    <h2>کالکشن ویژه Lume jewelry</h2>
+    <p>انتخابی ظریف و ماندگار برای استایل خاص شما</p>
+    <a href="#products">
+      <button class="gold-button">دیدن کالکشن</button>
+    </a>
+  </div>
+
+  <section class="products-section" id="products">
+    <h2 class="section-title">محصولات منتخب</h2>
+    <p class="section-subtitle">زیبایی را برای خودت انتخاب کن</p>
+
+    <div class="product-tools">
+      <input id="search"
+             type="search"
+             placeholder="جست‌وجوی محصول..."
+             oninput="renderProducts()">
+
+      <div class="filters">
+        <button class="active" onclick="filterProducts('همه', this)">همه</button>
+        <button onclick="filterProducts('انگشتر', this)">انگشتر</button>
+        <button onclick="filterProducts('گردنبند', this)">گردنبند</button>
+        <button onclick="filterProducts('گوشواره', this)">گوشواره</button>
+        <button onclick="filterProducts('دستبند', this)">دستبند</button>
+      </div>
+    </div>
+
+    <div class="products" id="product-list"></div>
+    <div id="collection-view" style="display:none; margin-top:35px;">
+      <h2 id="collection-title" class="section-title"></h2>
+      <p class="section-subtitle">محصولات این مجموعه</p>
+    
+      <button class="gold-button"
+              onclick="showAllProducts()"
+              style="margin-bottom:25px;">
+        مشاهده همه محصولات
+      </button>
+    
+      <div id="collection-products" class="products"></div>
+    </div>
+    
+  </section>
+</main>
+
+<section class="trust-section">
+    <div class="trust-item">
+      <span>✧</span>
+      <h3>تضمین کیفیت</h3>
+      <p>انتخابی ظریف و باکیفیت برای شما</p>
+    </div>
+  
+    <div class="trust-item">
+      <span>♡</span>
+      <h3>بسته‌بندی زیبا</h3>
+      <p>آماده برای هدیه دادن به عزیزانتان</p>
+    </div>
+  
+    <div class="trust-item">
+      <span>☎</span>
+      <h3>پشتیبانی مشتریان</h3>
+      <p>برای پرسش‌هایتان با ما در ارتباط باشید</p>
+    </div>
+  </section>
+  
+<div class="whatsapp-box">
+    <h3>برای سفارش و مشاوره با ما در ارتباط باشید</h3>
+    <p>با ما صحبت کنید تا برای انتخاب زیورآلات راهنمایی‌تان کنیم.</p>
+    <a class="whatsapp-button"
+       href="https://wa.me/989121234567"
+       target="_blank">
+      گفت‌وگو در واتساپ
+    </a>
+  </div>
+  
+<footer id="contact">
+  <h2>Lume jewelry ✨</h2>
+  <p>زیبایی، در جزئیات است.</p>
+  <p>برای اطلاعات بیشتر درباره محصولات با ما در تماس باشید.</p>
+  <p>© تمامی حقوق این فروشگاه محفوظ است.</p>
+</footer>
+
+<div class="modal" id="cart-modal" onclick="closeCartOutside(event)">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2>سبد خرید شما</h2>
+      <button class="close-button" onclick="closeCart()">×</button>
+    </div>
+
+    <div id="cart-items"></div>
+    <div class="cart-total" id="cart-total"></div>
+
+    <button class="gold-button" onclick="checkout()">
+      ثبت سفارش
+    </button>
+  </div>
+</div>
+
+<div class="modal" id="detail-modal" onclick="closeDetailOutside(event)">
+  <div class="modal-box" id="detail-content"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const products = [
+  {
+    id: 1,
+    name: "انگشتر طلای ظریف",
+    category: "انگشتر",
+    price: 8700000,
+    image: "images/ring.jpg.jpg",
+    description: "انگشتری ظریف و زیبا برای استفاده روزمره."
+  },
+  {
+    id: 2,
+    name: "گردنبند طلایی کلاسیک",
+    category: "گردنبند",
+    price: 12500000,
+    image: "images/necklace.jpg.jpg",
+    description: "گردنبندی شیک برای استایل‌های خاص."
+  },
+  {
+    id: 3,
+    name: "گوشواره طلایی ظریف",
+    category: "گوشواره",
+    price: 9800000,
+    image: "earing 1.jpg",
+    description: "گوشواره‌ای زیبا و مناسب هدیه."
+  },
+  {
+    id: 4,
+    name: "دستبند طلایی",
+    category: "دستبند",
+    price: 14500000,
+    image: "images/necklace.jpg.jpg",
+    description: "دستبندی ظریف با طراحی کلاسیک."
+  },
+  {
+    id: 5,
+    name: "انگشتر نگین‌دار",
+    category: "انگشتر",
+    price: 18500000,
+    image: "images/ring.jpg.jpg",
+    description: "انگشتری چشم‌نواز برای مناسبت‌های ویژه."
+  },
+  {
+    id: 6,
+    name: "گردنبند مینیمال",
+    category: "گردنبند",
+    price: 16700000,
+    image: "images/necklace.jpg.jpg",
+    description: "طراحی ساده و شیک برای سلیقه‌های خاص."
+  },
+  {
+    id: 7,
+    name: "گوشواره مجلسی",
+    category: "گوشواره",
+    price: 21500000,
+    image: "images/earrings.jpg.jpg",
+    description: "انتخابی درخشان برای مهمانی‌ها."
+  },
+  {
+    id: 8,
+    name: "انگشتر کلاسیک",
+    category: "انگشتر",
+    price: 11200000,
+    image: "images/ring.jpg.jpg",
+    description: "زیبایی ماندگار با طراحی کلاسیک."
+  }
+];
+
+let selectedCategory = "همه";
+let cart = [];
+
+function formatPrice(price) {
+  return price.toLocaleString("fa-IR") + " تومان";
+}
+
+function renderProducts() {
+  const list = document.getElementById("product-list");
+  const query = document.getElementById("search").value.trim();
+
+  const filtered = products.filter(product => {
+    const matchesCategory =
+      selectedCategory === "همه" ||
+      product.category === selectedCategory;
+
+    const matchesSearch =
+      product.name.includes(query) ||
+      product.category.includes(query);
+
+    return matchesCategory && matchesSearch;
+  });
+
+  if (filtered.length === 0) {
+    list.innerHTML = '<div class="empty">محصولی پیدا نشد.</div>';
+    return;
+  }
+
+  list.innerHTML = filtered.map(product => `
+    <article class="product">
+      <img src="${product.image}"
+           alt="${product.name}"
+           onclick="showDetail(${product.id})">
+
+      <div class="product-info">
+        <h3>${product.name}</h3>
+        <p>${product.category}</p>
+        <div class="price">${formatPrice(product.price)}</div>
+
+        <div class="product-actions">
+          <button class="add-button"
+                  onclick="addToCart(${product.id})">
+            افزودن به سبد
+          </button>
+
+          <button class="detail-button"
+                  onclick="showDetail(${product.id})">
+            جزئیات
+          </button>
+        </div>
+      </div>
+    </article>
+  `).join("");
+}
+
+function filterProducts(category, button) {
+  selectedCategory = category;
+
+  document.querySelectorAll(".filters button").forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+  if (button) {
+    button.classList.add("active");
+  } else {
+    document.querySelectorAll(".filters button").forEach(btn => {
+      if (btn.textContent.trim() === category) {
+        btn.classList.add("active");
+      }
+    });
+  }
+
+  renderProducts();
+
+  document.getElementById("products").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function addToCart(id) {
+  const product = products.find(item => item.id === id);
+  const existing = cart.find(item => item.id === id);
+
+  if (existing) {
+    existing.quantity++;
+  } else {
+    cart.push({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      quantity: 1
+    });
+  }
+
+  updateCart();
+  showToast("محصول به سبد خرید اضافه شد.");
+}
+
+function updateCart() {
+  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  document.getElementById("cart-count").textContent =
+    count.toLocaleString("fa-IR");
+
+  const items = document.getElementById("cart-items");
+
+  if (cart.length === 0) {
+    items.innerHTML = "<p>سبد خرید شما خالی است.</p>";
+  } else {
+    items.innerHTML = cart.map(item => `
+      <div class="cart-item">
+        <div>
+          <strong>${item.name}</strong>
+          <p>تعداد: ${item.quantity.toLocaleString("fa-IR")}</p>
+          <p>${formatPrice(item.price * item.quantity)}</p>
+        </div>
+
+        <button onclick="removeFromCart(${item.id})">
+          حذف
+        </button>
+      </div>
+    `).join("");
+  }
+
+  const total = cart.reduce(
+    (sum, item) => sum + item.price * item.quantity, 0
+  );
+
+  document.getElementById("cart-total").textContent =
+    "مجموع: " + formatPrice(total);
+}
+
+function removeFromCart(id) {
+  cart = cart.filter(item => item.id !== id);
+  updateCart();
+}
+
+function openCart() {
+  updateCart();
+  document.getElementById("cart-modal").classList.add("show");
+}
+
+function closeCart() {
+  document.getElementById("cart-modal").classList.remove("show");
+}
+
+function closeCartOutside(event) {
+  if (event.target.id === "cart-modal") {
+    closeCart();
+  }
+}
+
+function showDetail(id) {
+  const product = products.find(item => item.id === id);
+
+  document.getElementById("detail-content").innerHTML = `
+    <div class="modal-head">
+      <h2>جزئیات محصول</h2>
+      <button class="close-button" onclick="closeDetail()">×</button>
+    </div>
+
+    <img src="${product.image}"
+         alt="${product.name}"
+         style="width:100%;height:250px;object-fit:cover;border-radius:8px">
+
+    <h3 style="margin-top:15px">${product.name}</h3>
+    <p>${product.description}</p>
+    <p style="margin:12px 0;color:#b58a45;font-weight:bold">
+      ${formatPrice(product.price)}
+    </p>
+
+    <button class="gold-button" onclick="addToCart(${product.id})">
+      افزودن به سبد خرید
+    </button>
+  `;
+
+  document.getElementById("detail-modal").classList.add("show");
+}
+
+function closeDetail() {
+  document.getElementById("detail-modal").classList.remove("show");
+}
+
+function closeDetailOutside(event) {
+  if (event.target.id === "detail-modal") {
+    closeDetail();
+  }
+}
+
+function checkout() {
+  if (cart.length === 0) {
+    showToast("سبد خرید شما خالی است.");
+    return;
+  }
+
+  showToast("این نسخه نمایشی است؛ ثبت سفارش واقعی هنوز فعال نیست.");
+}
+
+let toastTimer;
+
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  clearTimeout(toastTimer);
+
+  toastTimer = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2500);
+}
+
+renderProducts();
+updateCart();
+</script>
+
+</body>
+</html>
